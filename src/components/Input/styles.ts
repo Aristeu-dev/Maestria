@@ -6,16 +6,17 @@ export const Container = styled.View`
   height: 60px;
   padding: 0 16px;
   background: #e9e9ff;
-  /* border: 1px solid #e9e9ff; */
   border-radius: 10px;
   margin-bottom: 8px;
   flex-direction: row;
   align-items: center;
+  font-family: Rubik_400Regular;
 `;
 
 export const TextInput = styled.TextInput`
+  font-family: Rubik_400Regular;
   flex: 1;
-  color: #fff;
+  color: #070417;
   font-size: 16px;
 `;
 

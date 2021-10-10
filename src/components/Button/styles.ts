@@ -9,6 +9,7 @@ export const Container = styled(RectButton)`
   align-items: center;
 `;
 export const ButtonText = styled.Text`
+  font-family: Rubik_400Regular;
   color: #ffff;
   font-size: 16px;
 `;

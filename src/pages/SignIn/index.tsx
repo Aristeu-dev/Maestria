@@ -1,23 +1,59 @@
 import React from "react";
 
-import { Image } from "react-native";
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  View,
+  ScrollView,
+} from "react-native";
 import logoImg from "../../assets/logo.png";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import { Container, Title } from "./styles";
+import Icon from "react-native-vector-icons/Feather";
+import {
+  Container,
+  Title,
+  ForgotPassword,
+  ForgotPasswordText,
+  CreateAccountButton,
+  CreateAccountButtonText,
+} from "./styles";
+
 const SignIn: React.FC = () => {
   return (
-    <Container>
-      <Image source={logoImg} style={{ width: 200, height: 200 }} />
+    <>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        enabled
+      >
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ flex: 1 }}
+        >
+          <Container>
+            <Image source={logoImg} style={{ width: 200, height: 200 }} />
+            <View>
+              <Title>Vamos começar!</Title>
+            </View>
+            <Input name="email" icon="mail" placeholder="E-mail" />
 
-      {/* <Title>Login</Title> */}
+            <Input name="password" icon="lock" placeholder="Senha" />
 
-      <Input name="email" icon="mail" placeholder="E-mail" />
+            <Button onPress={() => console.log("Deu")}>Entrar</Button>
+            <ForgotPassword onPress={() => {}}>
+              <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
+            </ForgotPassword>
+          </Container>
+        </ScrollView>
+      </KeyboardAvoidingView>
+      <CreateAccountButton onPress={() => {}}>
+        <Icon name="log-in" size={20} color="#070417" />
 
-      <Input name="password" icon="lock" placeholder="Senha" />
-
-      <Button onPress={() => console.log("Deu")}>Entrar</Button>
-    </Container>
+        <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
+      </CreateAccountButton>
+    </>
   );
 };
 export default SignIn;
