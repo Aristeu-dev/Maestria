@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import React from "react";
 import { View, StatusBar } from "react-native";
-import Routes from "./routes";
+import Routes from "./components/routes";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   useFonts,
@@ -10,7 +10,7 @@ import {
 } from "@expo-google-fonts/rubik";
 
 const Index: React.FC = () => {
-  let [fontsLoaded, error] = useFonts({
+  let [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
   });

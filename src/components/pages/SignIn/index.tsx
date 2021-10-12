@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Image,
@@ -6,11 +6,12 @@ import {
   Platform,
   View,
   ScrollView,
-} from "react-native";
-import logoImg from "../../assets/logo.png";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Icon from "react-native-vector-icons/Feather";
+} from 'react-native';
+import logoImg from '../../../assets/logo.png';
+import Button from '../../atoms/Button';
+import Input from '../../atoms/Input';
+import Icon from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
 import {
   Container,
   Title,
@@ -18,14 +19,15 @@ import {
   ForgotPasswordText,
   CreateAccountButton,
   CreateAccountButtonText,
-} from "./styles";
+} from './styles';
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation();
   return (
     <>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled
       >
         <ScrollView
@@ -41,7 +43,9 @@ const SignIn: React.FC = () => {
 
             <Input name="password" icon="lock" placeholder="Senha" />
 
-            <Button onPress={() => console.log("Deu")}>Entrar</Button>
+            <Button onPress={() => navigation.navigate('Dashboard')}>
+              Entrar
+            </Button>
             <ForgotPassword onPress={() => {}}>
               <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
