@@ -1,15 +1,16 @@
 import React from 'react';
-import { Container, Header, Row, TitleHeader, Exit } from './styles';
+import { Container, Header, Row, Title } from './styles';
 import IconHeader from 'react-native-vector-icons/AntDesign';
 
+import Button from '../../atoms/Button';
+import CardRoutine from '../../molecules/CardRoutine';
+import ActivityList from '../../organisms/ActivityList';
 const Dashboard: React.FC = () => {
   return (
     <Container>
-      <Header>
-        <IconHeader name="arrowleft" size={25} color="#070417" />
-        <TitleHeader>Dashboard</TitleHeader>
-        <Exit>Sair</Exit>
-      </Header>
+      <Title>Minha rotina</Title>
+      <CardRoutine></CardRoutine>
+      <ActivityList></ActivityList>
     </Container>
   );
 };

@@ -35,7 +35,7 @@ const SignIn: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container>
-            <Image source={logoImg} style={{ width: 200, height: 200 }} />
+            {/* <Image source={logoImg} style={{ width: 200, height: 200 }} /> */}
             <View>
               <Title>Vamos começar!</Title>
             </View>

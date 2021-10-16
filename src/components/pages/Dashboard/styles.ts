@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import Button from '../../atoms/Button';
+
 export const Container = styled.View`
   flex: 1;
-  justify-content: space-between;
-  padding: 15px;
+  padding: 22px 16px 55px;
 `;
 
 export const Header = styled.View`
@@ -17,15 +17,8 @@ export const Row = styled.View`
   justify-content: space-evenly;
 `;
 
-export const TitleHeader = styled.Text`
+export const Title = styled.Text`
   color: #070417;
   font-size: 24px;
   font-family: Rubik_500Medium;
-`;
-
-export const Exit = styled(Button)`
-  width: 43px;
-  height: 24px;
-  background: #ffeff1;
-  color: #fd5b71;
 `;
