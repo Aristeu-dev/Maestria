@@ -8,6 +8,7 @@ export const Container = styled(RectButton)`
   align-items: center;
   top: ${props => (props.top ? props.top : 0)};
   background: ${props => (props.background ? props.background : '#1b143f')};
+  margin-bottom: ${props => (props.marginBottom ? props.marginBottom : 0)};
 `;
 export const ButtonText = styled.Text`
   font-family: Rubik_400Regular;
