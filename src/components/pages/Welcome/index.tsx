@@ -1,42 +1,45 @@
-import React, { useRef, useEffect, useCallback } from 'react';
-import {
-  View,
-  Dimensions,
-  Animated,
-  PanResponder,
-  Easing,
-  Image,
-} from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { Dimensions, Animated, Easing } from 'react-native';
 import { Container } from './styles';
 import Text from '../../atoms/Text';
 import Button from '../../atoms/Button';
 import Mornings from '../../../assets/mornings.svg';
-import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+
 const Welcome: React.FC = () => {
+  const navigation = useNavigation();
   const { height, width } = Dimensions.get('window');
 
-  const tabToRight = useRef(new Animated.Value(-width)).current; // Initial value for opacity: 0
-  const componentsToRight = useRef(new Animated.Value(-width)).current;
+  const toRight = useRef(new Animated.Value(-width)).current;
 
-  useEffect(() => {
-    Animated.timing(tabToRight, {
+  const fadeIn = () => {
+    Animated.timing(toRight, {
       toValue: 0,
       duration: 800,
       useNativeDriver: true,
       easing: Easing.linear,
-    }).start(() => {
-      Animated.timing(componentsToRight, {
-        toValue: 0,
+    }).start();
+  };
+
+  const fadeOut = () => {
+    return new Promise(resolve => {
+      Animated.timing(toRight, {
+        toValue: -(width * 0.8),
         duration: 600,
         useNativeDriver: true,
         easing: Easing.linear,
-      }).start();
+      }).start(({ finished }) => {
+        resolve(finished);
+      });
     });
-  }, [tabToRight]);
+  };
+
+  useEffect(() => fadeIn(), []);
 
   return (
     <Container>
-      <Animated.View // Special animatable View
+      
+      <Animated.View
         style={{
           width: '80%',
           height,
@@ -46,7 +49,7 @@ const Welcome: React.FC = () => {
           justifyContent: 'space-around',
           transform: [
             {
-              translateX: tabToRight,
+              translateX: toRight,
             },
           ],
         }}
@@ -60,7 +63,7 @@ const Welcome: React.FC = () => {
 
             transform: [
               {
-                translateX: componentsToRight,
+                translateX: toRight,
               },
             ],
           }}
@@ -81,7 +84,7 @@ const Welcome: React.FC = () => {
 
             transform: [
               {
-                translateX: componentsToRight,
+                translateX: toRight,
               },
             ],
           }}
@@ -95,7 +98,7 @@ const Welcome: React.FC = () => {
             alignItems: 'center',
             transform: [
               {
-                translateX: componentsToRight,
+                translateX: toRight,
               },
             ],
           }}
@@ -108,6 +111,10 @@ const Welcome: React.FC = () => {
             borderRadius="40px"
             color="white"
             fontSize="16px"
+            onPress={async () => {
+              const finished = await fadeOut();
+              if (finished) navigation.navigate('SignIn');
+            }}
           >
             Login
           </Button>
@@ -119,6 +126,10 @@ const Welcome: React.FC = () => {
             color="white"
             fontSize="16px"
             color="#070417"
+            onPress={async () => {
+              const finished = await fadeOut();
+              if (finished) navigation.navigate('SignUp');
+            }}
           >
             Criar conta
           </Button>
@@ -128,9 +139,3 @@ const Welcome: React.FC = () => {
   );
 };
 export default Welcome;
-
-// width: '80%',
-//             height,
-//             backgroundColor: '#070417',
-//             borderTopEndRadius: 30,
-//             borderBottomEndRadius: 30,

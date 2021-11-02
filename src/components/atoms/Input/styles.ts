@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import FeatherIcon from "react-native-vector-icons/Feather";
+import styled from 'styled-components/native';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 export const Container = styled.View`
   width: 100%;
@@ -11,6 +11,8 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   font-family: Rubik_400Regular;
+  border-radius: ${(props: { borderRadius: string }) =>
+    props.borderRadius ? props.borderRadius : '10px'};
 `;
 
 export const TextInput = styled.TextInput`

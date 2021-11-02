@@ -7,11 +7,13 @@ import Dashboard from '../pages/Dashboard';
 import Tabs from '../organisms/Tabs/tabs';
 import Welcome from '../pages/Welcome';
 import { useState } from 'react';
+import Toast from 'react-native-toast-message';
 
 const Auth = createStackNavigator();
 
 const AuthRoutes: React.FC = () => {
   const [isSigned, setIsSigned] = useState(true);
+
   return (
     <>
       {isSigned ? (
@@ -21,10 +23,10 @@ const AuthRoutes: React.FC = () => {
             cardStyle: { backgroundColor: '#FFFFFF' },
           }}
         >
-          <Auth.Screen name="Welcome" component={Welcome} />
 
+          <Auth.Screen name="Welcome" component={Welcome} />
           <Auth.Screen name="SignIn" component={SignIn} />
-          <Auth.Screen name="SignUn" component={SignUp} />
+          <Auth.Screen name="SignUp" component={SignUp} />
           <Auth.Screen name="Dashboard" component={Dashboard} />
         </Auth.Navigator>
       ) : (
