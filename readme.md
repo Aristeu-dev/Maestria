@@ -6,7 +6,7 @@ This project is Maestria software, using react native.
 
 #### Technologies
 
-- JavaScript
+- TypeScript
 - React-Native
 - Styled Components
 
